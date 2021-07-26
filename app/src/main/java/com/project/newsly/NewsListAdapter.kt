@@ -1,6 +1,5 @@
 package com.project.newsly
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.lifecycle.LiveData
@@ -8,15 +7,22 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.newsly.databinding.ListItemBinding
 
-class NewsListAdapter(val context: Context, private val articles: LiveData<List<Article>>): RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>(){
+class NewsListAdapter(private val listener: NewsItemClicked,
+                      private val articles: LiveData<List<Article>>): RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
         val adapterLayout = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+
         return NewsViewHolder(adapterLayout)
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
         val currentItem = articles.value!![position]
         holder.bindData(currentItem)
+
+        holder.itemView.setOnClickListener {
+            listener.onItemClicked(articles.value!![position])
+        }
+
     }
 
     override fun getItemCount(): Int {
@@ -34,8 +40,14 @@ class NewsListAdapter(val context: Context, private val articles: LiveData<List<
 
             val image = binding.itemImage
             Glide.with(this.itemView.context).load(article.urlToImage).into(image)
+
+
         }
 
+    }
+
+    interface NewsItemClicked {
+        fun onItemClicked(item: Article)
     }
 
 

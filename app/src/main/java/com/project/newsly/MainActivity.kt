@@ -1,14 +1,17 @@
 package com.project.newsly
 
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.project.newsly.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), NewsListAdapter.NewsItemClicked {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var newsViewModel: NewsViewModel
@@ -34,5 +37,13 @@ class MainActivity : AppCompatActivity() {
 
         })
     }
+
+    override fun onItemClicked(item: Article) {
+//        Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
+        val builder = CustomTabsIntent.Builder()
+        val customTabsIntent: CustomTabsIntent = builder.build()
+        customTabsIntent.launchUrl(this, Uri.parse(item.url))
+    }
+
 
 }

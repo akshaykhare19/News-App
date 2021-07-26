@@ -16,12 +16,7 @@ class NewsViewModel: ViewModel() {
     private val _status = MutableLiveData<String>()
 
     val status: LiveData<String> = _status
-//
-//    fun observeNewsArticle(): MutableLiveData<News> {
-//
-//        getNewsArticle()
-//        return _newsItem
-//    }
+
 
     init {
 //        observeNewsArticle()
