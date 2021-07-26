@@ -27,13 +27,11 @@ class MainActivity : AppCompatActivity() {
 //            binding.status.text = it
 //        })
 
-//        newsViewModel.observeNewsArticle().observe(this, Observer {
-//                binding.newsList.adapter = NewsListAdapter(this, data)
-//        })
 
         newsViewModel.newsItem.observe(this, Observer {
             data.value = it.articles
             binding.newsList.adapter = NewsListAdapter(this, data)
+
         })
     }
 

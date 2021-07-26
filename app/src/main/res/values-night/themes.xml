@@ -16,7 +16,7 @@
 
     <style name="RoundImage" parent="">
 
-        <item name="cornerSize">20%</item>
+        <item name="cornerSize">10%</item>
         <item name="color">@color/black</item>
 
     </style>
