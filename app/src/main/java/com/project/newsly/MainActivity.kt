@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.browser.customtabs.CustomTabsIntent
@@ -39,20 +40,28 @@ class MainActivity : AppCompatActivity(), NewsListAdapter.NewsItemClicked {
         })
     }
 
+    private fun logOut() {
+        firebaseAuth.signOut()
+        startActivity(Intent(this, CreateAccountActivity::class.java))
+        toast("Logged Out")
+        finish()
+    }
+
     override fun onItemClicked(item: Article) {
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent: CustomTabsIntent = builder.build()
         customTabsIntent.launchUrl(this, Uri.parse(item.url))
     }
 
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.log_out_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
-        if (item.itemId == R.id.action_log_out){
-            firebaseAuth.signOut()
-            startActivity(Intent(this, CreateAccountActivity::class.java))
-            toast("Logged Out")
-            finish()
-            return true
+        when(item.itemId) {
+            R.id.action_log_out -> logOut()
         }
 
         return super.onOptionsItemSelected(item)

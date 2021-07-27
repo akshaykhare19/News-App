@@ -57,6 +57,7 @@
             android:hint="@string/password"
             android:inputType="textPassword"
             android:maxLength="8"
+            android:maxLines="1"
             android:textSize="22sp"
             android:gravity="bottom"
             android:layout_marginTop="40dp"/>
@@ -80,6 +81,7 @@
             android:hint="@string/confirm_password"
             android:inputType="textPassword"
             android:maxLength="8"
+            android:maxLines="1"
             android:textSize="22sp"
             android:gravity="bottom"
             android:layout_marginTop="40dp"/>
