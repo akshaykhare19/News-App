@@ -9,4 +9,5 @@
     <string name="confirm_password">Confirm Password</string>
     <string name="question2">Don\'t have an account?</string>
     <string name="welcome">Welcome</string>
+    <string name="action_log_out">Action Log Out</string>
 </resources>
