@@ -26,12 +26,8 @@ class MainActivity : AppCompatActivity(), NewsListAdapter.NewsItemClicked {
 
         newsViewModel = ViewModelProvider(this).get(NewsViewModel::class.java)
 
-//        newsViewModel.status.observe(this, Observer {
-//            binding.status.text = it
-//        })
 
-
-        newsViewModel.newsItem.observe(this, Observer {
+        newsViewModel.newsItem.observe(this, {
             data.value = it.articles
             binding.newsList.adapter = NewsListAdapter(this, data)
 
@@ -39,7 +35,6 @@ class MainActivity : AppCompatActivity(), NewsListAdapter.NewsItemClicked {
     }
 
     override fun onItemClicked(item: Article) {
-//        Toast.makeText(this, item.title, Toast.LENGTH_SHORT).show()
         val builder = CustomTabsIntent.Builder()
         val customTabsIntent: CustomTabsIntent = builder.build()
         customTabsIntent.launchUrl(this, Uri.parse(item.url))

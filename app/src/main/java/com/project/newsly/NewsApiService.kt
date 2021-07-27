@@ -9,18 +9,20 @@ import retrofit2.http.Query
 const val BASE_URL = "https://newsapi.org/v2/"
 const val API_KEY = "236fd80af9c24ab5b18dd50d7f4d6d7d"
 
-//     https://newsapi.org/v2/
 interface NewsApiService {
 
     @GET("top-headlines")
-    suspend fun getNews(@Query("country") country: String,
-                        @Query("apiKey") apiKey: String): News
+    suspend fun getNews(
+        @Query("country") country: String,
+        @Query("apiKey") apiKey: String
+    ): News
 
 }
 
 
-object NewsService{
+object NewsService {
     val newsInstance: NewsApiService
+
     init {
 
         val retrofit = Retrofit.Builder()

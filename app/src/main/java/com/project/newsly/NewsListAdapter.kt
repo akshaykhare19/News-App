@@ -7,10 +7,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.project.newsly.databinding.ListItemBinding
 
-class NewsListAdapter(private val listener: NewsItemClicked,
-                      private val articles: LiveData<List<Article>>): RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>(){
+class NewsListAdapter(
+    private val listener: NewsItemClicked,
+    private val articles: LiveData<List<Article>>
+) : RecyclerView.Adapter<NewsListAdapter.NewsViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
-        val adapterLayout = ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val adapterLayout =
+            ListItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
 
         return NewsViewHolder(adapterLayout)
     }
@@ -29,9 +32,10 @@ class NewsListAdapter(private val listener: NewsItemClicked,
         return articles.value!!.size
     }
 
-    class NewsViewHolder(private val binding: ListItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class NewsViewHolder(private val binding: ListItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
-        fun bindData(article: Article){
+        fun bindData(article: Article) {
             val titleText = binding.itemText
             titleText.text = article.title
 

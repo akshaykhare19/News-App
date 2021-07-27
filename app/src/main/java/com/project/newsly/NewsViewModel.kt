@@ -7,9 +7,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class NewsViewModel: ViewModel() {
+class NewsViewModel : ViewModel() {
 
-    var _newsItem = MutableLiveData<News>()
+    private var _newsItem = MutableLiveData<News>()
 
     val newsItem: LiveData<News> = _newsItem
 
@@ -19,7 +19,6 @@ class NewsViewModel: ViewModel() {
 
 
     init {
-//        observeNewsArticle()
         getNewsArticle()
     }
 
