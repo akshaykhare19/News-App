@@ -13,6 +13,7 @@ import com.project.newsly.utils.FirebaseUtils.firebaseUser
 
 class CreateAccountActivity : AppCompatActivity() {
 
+
     private lateinit var binding: ActivityCreateAccountBinding
     lateinit var userEmail: String
     lateinit var userPassword: String
@@ -22,6 +23,8 @@ class CreateAccountActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        supportActionBar?.hide()
 
         createAccountInputsArray = arrayOf(binding.inputEmail,
                                            binding.inputPassword,

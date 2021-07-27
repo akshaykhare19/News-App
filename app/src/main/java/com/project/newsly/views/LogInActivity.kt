@@ -21,6 +21,8 @@ class LogInActivity : AppCompatActivity() {
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        supportActionBar?.hide()
+
         logInInputArray = arrayOf(binding.logInEmail, binding.logInPassword)
 
         binding.signInText.setOnClickListener {
